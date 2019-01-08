@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nowakowski - Week 1 Read-Todo</title>
+</head>
+<body>
+    <article>
+        <h1>todo.json</h1>
+        <p id="jsontext"></p>
+    </article>
+
+    <script>
+        addEventListener('load', () => {
+            fetch('http://localhost:3000/todo.json')
+            .then((response) => { return response.json(); })
+            .then((json) => {
+                let jsontext = document.getElementById("jsontext");
+                jsontext.appendChild(document.createTextNode(JSON.stringify(json)));
+            });
+        });
+    </script>
+</body>
+</html>
