@@ -6,12 +6,14 @@ const mimeTypes = require('./mimetypes.js');
 let server =  http.createServer((request, response) => {
     let pathName = url.parse(request.url).pathname;
 
+    // Redirect to a given page, optionally on a different host
     function redirect(url, host = request.headers['host']) {
         response.writeHead(301, { 'Location':`http://${host}${url}` });
     }
     
+    // Serve file using mime from mimetypes map
     function serveFile(data, ext) {
-        let mime = "text/plain";
+        let mime = null; // Default to unknown
         for(let i = 0; i < mimeTypes.length; i++) {
             if(ext == mimeTypes[i].ext) {
                 mime = mimeTypes[i].mime;
@@ -19,8 +21,13 @@ let server =  http.createServer((request, response) => {
             }
         }
 
-        response.writeHead(200, {'Content-Type':mime });
+        response.statusCode = 200; // Give OK status code
+
+        // Set mime type on response only if known
+        // per RFC-7231 HTTP/1.1 Semantics and Content
+        if(mime) response.setHeader("Content-Type", mime);
         response.write(data.toString());
+
         console.log(`Served: ${pathName}, using mime: ${mime}`);
     }
 
