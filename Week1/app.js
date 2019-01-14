@@ -46,18 +46,18 @@ let server =  http.createServer((request, response) => {
                     break;
 
                 case '/todo': // /todo.json
-                    fileSystem.readFile('/todo.json', readFileComplete);
+                    redirect('/todo.json');
                     break;
 
                 case '/read-todo': // /read-todo.html (uses client browser to fetch todo.json)
-                    fileSystem.readFile('/read-todo.html', readFileComplete);
+                    redirect('/read-todo.html');
                     break;
 
                 // index.html (webroot or invalid)
                 case '/':
                 case '/index':
                 default:
-                    fileSystem.readFile('/index.html', readFileComplete);
+                    redirect('/index.html');
                     break;
             }  
         } else serveFile(data, ext); // Respond with file contents if found
