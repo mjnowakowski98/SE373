@@ -7,18 +7,50 @@
     <title>Nowakowski - Week 1 Read-Todo</title>
 </head>
 <body>
-    <article>
-        <h1>todo.json</h1>
-        <p id="jsontext"></p>
-    </article>
+    <h1>Read-Todo</h1>
+    <table id="jsonOut">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Completed</th>
+            </tr>
+        </thead>
+    </table>
+
+    <a href="/index.html">Index</a>
+    <a href="/todo.json">todo.json</a>
 
     <script>
         addEventListener('load', () => {
             fetch('http://localhost:3000/todo.json')
             .then((response) => { return response.json(); })
             .then((json) => {
-                let jsontext = document.getElementById("jsontext");
-                jsontext.appendChild(document.createTextNode(JSON.stringify(json)));
+                let outputTable = document.getElementById('jsonOut');
+
+                for(let i = 0; i < json.length; i++) {
+                    let jsonObj = json[i];
+                    let tmpRow = document.createElement('tr');
+
+                    let tmpCol = document.createElement('td');
+                    tmpCol.appendChild(document.createTextNode(jsonObj.userId));
+                    tmpRow.appendChild(tmpCol);
+
+                    tmpCol = document.createElement('td');
+                    tmpCol.appendChild(document.createTextNode(jsonObj.id));
+                    tmpRow.appendChild(tmpCol);
+
+                    tmpCol = document.createElement('td');
+                    tmpCol.appendChild(document.createTextNode(jsonObj.title));
+                    tmpRow.appendChild(tmpCol);
+
+                    tmpCol = document.createElement('td');
+                    tmpCol.appendChild(document.createTextNode(jsonObj.completed));
+                    tmpRow.appendChild(tmpCol);
+
+                    outputTable.appendChild(tmpRow);
+                }
             });
         });
     </script>

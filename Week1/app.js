@@ -16,12 +16,9 @@ let server =  http.createServer((request, response) => {
     function serveFile(data, ext) {
         let mime = null; // Default to unknown
         if(ext) { // Check against known mime types if extension is known
-            for(let i = 0; i < mimeTypes.length; i++) {
-                if(ext == mimeTypes[i].ext) {
-                    mime = mimeTypes[i].mime;
-                    break;
-                }
-            }
+            let ndx = mimeTypes.length;
+            while(--ndx > 0 && ext != mimeTypes[ndx].ext) continue;
+            if(ndx >= 0) mime = mimeTypes[ndx].mime;
         }
 
         response.statusCode = 200; // Give OK status code
@@ -49,19 +46,18 @@ let server =  http.createServer((request, response) => {
                     break;
 
                 case '/todo': // /todo.json
-                    redirect('/todo.json');
+                    fileSystem.readFile('/todo.json', readFileComplete);
                     break;
 
                 case '/read-todo': // /read-todo.html (uses client browser to fetch todo.json)
-                    redirect('/read-todo.html');
+                    fileSystem.readFile('/read-todo.html', readFileComplete);
                     break;
 
                 // index.html (webroot or invalid)
                 case '/':
                 case '/index':
                 default:
-                    console.log('Url invalid, falling back to index');
-                    redirect('/index.html');
+                    fileSystem.readFile('/index.html', readFileComplete);
                     break;
             }  
         } else serveFile(data, ext); // Respond with file contents if found
