@@ -5,17 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{title}}</title>
+
+    <link href="css/style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-    {{> header}}
+    <div id="wrapper">
+        {{> header}}
 
-    <form action="/results" method="POST">
-        <input type="text" name="fName">
-        <input type="text" name="lName">
-        <input type="text" name="email">
-        <input type="text" name="comments">
+        <form action="/results" method="POST">
+            <div>
+                <label>First name: <input type="text" name="fName"></label>
+            </div>
+            <div>
+                <label>Last name: <input type="text" name="lName"></label>
+            </div>
+            <div>
+                <label>Email: <input type="text" name="email"></label>
+            </div>
+            <div>
+                <label>Comments: <input type="text" name="comments"></label>
+            </div>
 
-        <input type="submit">
-    </form>
+            <input type="submit">
+        </form>
+    </div>
 </body>
 </html>

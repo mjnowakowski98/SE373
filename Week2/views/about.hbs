@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{title}}</title>
+
+    <link href="css/style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-    {{> header}}
+    <div id="wrapper">
+        {{> header}}
 
-    <img src="koala.jpg" type="img/jpeg">
+        <img src="img/koala.jpg" type="img/jpeg">
 
-    {{> lipsum}}
-
-    {{> lipsum}}
+        {{> lipsum}}
+        {{> lipsum}}
+    </div>
 </body>
 </html>

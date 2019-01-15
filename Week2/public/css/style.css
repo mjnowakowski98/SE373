@@ -1,0 +1,13 @@
+header { 
+    border:2px solid white;
+    text-align:center;
+    margin:10px 0;
+}
+header a { margin:10px 5px; }
+p { text-indent: 2em; }
+body { background-color:#a4a4a4; }
+img { border:1px solid black; }
+#wrapper {
+    width:80%;
+    margin:0 auto;
+}
