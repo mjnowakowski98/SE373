@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+
+    <link href="master.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>{{title}}</h1>
+        <hr>
+
+        <form action="/grid" method="GET">
+            <label for="grid-size">Grid size</label>
+            <select id="grid-size" name="gridSize">
+                {{#each gridSizes}}
+                    <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+            <input type="Submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
