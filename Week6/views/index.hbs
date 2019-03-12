@@ -30,16 +30,16 @@
         <div class="row">
             <div class="col">
                 <form action="/createemployee" method="post">
-                    <input type="text" class="form-control" name="firstName" value="{{postData.firstName}}" placeholder="First name">
-                    <input type="text" class="form-control" name="lastName" value="{{postData.lastName}}" placeholder="Last name">
-                    <select class="form-control" name="department" data-post-data-dept="{{postData.department}}">
+                    <input type="text" class="form-control mb-2" name="firstName" value="{{postData.firstName}}" placeholder="First name">
+                    <input type="text" class="form-control mb-2" name="lastName" value="{{postData.lastName}}" placeholder="Last name">
+                    <select class="form-control mb-2" name="department" data-post-data-dept="{{postData.department}}">
                         <option value="Research" selected>Research</option>
                         <option value="Billing">Billing</option>
                         <option value="Marketing">Marketing</option>
                     </select>
-                    <input type="date" class="form-control" name="startDate" value="{{postData.startDate}}">
-                    <input type="text" class="form-control" name="jobTitle" value="{{postData.jobTitle}}" placeholder="Job Title">
-                    <input type="number" class="form-control" name="salary" value="{{postData.salary}}">
+                    <input type="date" class="form-control mb-2" name="startDate" value="{{postData.startDate}}">
+                    <input type="text" class="form-control mb-2" name="jobTitle" value="{{postData.jobTitle}}" placeholder="Job Title">
+                    <input type="number" class="form-control mb-2" name="salary" value="{{postData.salary}}">
                     <input type="submit" class="btn btn-success" value="Create Employee">
                 </form>
             </div>

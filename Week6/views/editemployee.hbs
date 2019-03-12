@@ -24,16 +24,16 @@
                 {{#if employee}}
                     <form action="/editemployee" method="post">
                         <input type="hidden" name="id" value="{{employee.id}}">
-                        <input type="text" class="form-control" name="firstName" value="{{employee.firstName}}">
-                        <input type="text" class="form-control" name="lastName" value="{{employee.lastName}}">
-                        <select class="form-control" data-employeeDept="{{employee.department}}" name="department">
+                        <input type="text" class="form-control mb-2" name="firstName" value="{{employee.firstName}}">
+                        <input type="text" class="form-control mb-2" name="lastName" value="{{employee.lastName}}">
+                        <select class="form-control mb-2" data-employeeDept="{{employee.department}}" name="department">
                             <option value="Research">Research</option>
                             <option value="Billing">Billing</option>
                             <option value="Marketing">Marketing</option>
                         </select>
-                        <input type="date" class="form-control" name="startDate" value="{{employee.startDate}}">
-                        <input type="text" class="form-control" name="jobTitle" value="{{employee.jobTitle}}">
-                        <input type="number" class="form-control" name="salary" value="{{employee.salary}}">
+                        <input type="date" class="form-control mb-2" name="startDate" value="{{employee.startDate}}">
+                        <input type="text" class="form-control mb-2" name="jobTitle" value="{{employee.jobTitle}}">
+                        <input type="number" class="form-control mb-2" name="salary" value="{{employee.salary}}">
                         <input type="submit" class="btn btn-warning" value="Update Employee">
                     </form>
                 {{else}}
